@@ -314,7 +314,7 @@
                 Quanto mais detalhado, mais fiel será o render!
             </div>
 
-            <form id="briefingForm" action="#" method="POST">
+            <form id="briefingForm" action="https://formspree.io/f/mgopqenz" method="POST">
                 
                 <!-- DADOS DO CLIENTE -->
                 <h2>01 // DADOS DO CLIENTE</h2>
@@ -486,33 +486,62 @@
     </div>
 
     <script>
-        // Envio do formulário sem validação de campos obrigatórios
-        document.getElementById('briefingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aqui você integraria com seu backend/API de envio
-            // Ex: fetch(), Formspree, EmailJS, etc.
-            
-            // Exibe a página de agradecimento
-            document.getElementById('mainForm').classList.add('hidden');
-            document.getElementById('thankYouPage').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            /* 
-            // Exemplo de integração com fetch:
-            const formData = new FormData(this);
-            fetch('SEU_ENDPOINT_AQUI', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if(response.ok) {
-                    document.getElementById('mainForm').classList.add('hidden');
-                    document.getElementById('thankYouPage').classList.add('active');
-                }
-            });
-            */
+    // Validação e envio via Formspree (mantém a página de agradecimento)
+    document.getElementById('briefingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const checkboxes = document.querySelectorAll('input[name="termos[]"]:checked');
+        if (checkboxes.length < 3) {
+            alert('Por favor, aceite todos os termos e condições para continuar.');
+            return false;
+        }
+
+        const btn = document.querySelector('.btn-submit');
+        const originalText = btn.textContent;
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Sucesso: mostra a página de agradecimento
+                document.getElementById('mainForm').classList.add('hidden');
+                document.getElementById('thankYouPage').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.reset();
+            } else {
+                response.json().then(data => {
+                    alert('Erro ao enviar: ' + (data.error || 'Tente novamente.'));
+                });
+            }
+        })
+        .catch(error => {
+            alert('Erro de conexão. Verifique sua internet e tente novamente.');
+        })
+        .finally(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
         });
-    </script>
+    });
+
+    // Mantém compatibilidade com inputs de arquivo (caso adicione no futuro)
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            const label = this.nextElementSibling;
+            if (fileName && label) {
+                label.innerHTML = `✅ ${fileName}<br><small>Arquivo selecionado com sucesso</small>`;
+                label.style.borderColor = '#d4af37';
+                label.style.color = '#d4af37';
+            }
+        });
+    });
+</script>
 </body>
 </html>
