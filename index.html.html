@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ETR] - Briefing Render Express</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a2218;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #242f20;
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid #3d4f3a;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5em;
+            color: #c94545;
+            text-shadow: 3px 3px 0px #1a2218;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #d4af37;
+        }
+
+        .logo-white {
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7em;
+            color: #8f9f8a;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .tagline {
+            color: #d4af37;
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1em;
+            color: #c94545;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3d4f3a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .required::after {
+            content: " *";
+            color: #c94545;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a2218;
+            border: 2px solid #3d4f3a;
+            color: #ffffff;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .hint {
+            font-size: 0.8em;
+            color: #8f9f8a;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            background-color: #1a2218;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #3d4f3a;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: #c94545;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 0.85em;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #c94545;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-submit:hover {
+            background-color: #a33333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .info-box {
+            background-color: #1a2218;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .info-box strong {
+            color: #d4af37;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3d4f3a;
+            color: #8f9f8a;
+            font-size: 0.8em;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background-color: #1a2218;
+            border: 2px dashed #3d4f3a;
+            color: #8f9f8a;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .file-input-label:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        /* Página de Agradecimento - estilo integrado ao original */
+        .thank-you-page {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .thank-you-page.active {
+            display: block;
+        }
+        .form-content.hidden {
+            display: none;
+        }
+        .thank-you-page .checkmark {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3em;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        .thank-you-page h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1em;
+            color: #c94545;
+            margin: 20px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3d4f3a;
+        }
+        .thank-you-page p {
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .thank-you-page .next-steps {
+            background-color: #1a2218;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #3d4f3a;
+            text-align: left;
+            margin: 20px 0;
+        }
+        .thank-you-page .next-steps strong {
+            color: #d4af37;
+        }
+        .btn-back {
+            background-color: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        .btn-back:hover {
+            background-color: #d4af37;
+            color: #1a2218;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .logo h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- FORMULÁRIO PRINCIPAL -->
+        <div class="form-content" id="mainForm">
+            <div class="logo">
+                <div class="subtitle">ARCHVIZ STUDIO</div>
+                <h1>[E<span>TR</span>]</h1>
+                <div class="tagline">ENTER THE RENDER</div>
+                <div class="tagline" style="font-size: 0.7em; margin-top: 10px;">BUILDING WORLDS. RENDERING FUTURES.</div>
+            </div>
+
+            <div class="info-box">
+                <strong>📋 TESTE DE CONCEITO EXPRESS</strong><br>
+                Preencha com atenção máxima. Este é um teste de fluxo <strong>"Zero Revisão"</strong>. 
+                Quanto mais detalhado, mais fiel será o render!
+            </div>
+
+            <form id="briefingForm" action="https://formspree.io/f/mgopqenz" method="POST">
+                
+                <!-- DADOS DO CLIENTE -->
+                <h2>01 // DADOS DO CLIENTE</h2>
+                
+                <div class="form-group">
+                    <label class="required">Nome do Responsável</label>
+                    <input type="text" name="nome_responsavel" required placeholder="Seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Nome do Escritório de Arquitetura</label>
+                    <input type="text" name="nome_escritorio" required placeholder="Nome do seu escritório">
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Instagram do Escritório</label>
+                    <input type="text" name="instagram" required placeholder="@seuescritorio">
+                    <div class="hint">* Obrigatório para marcação nas redes sociais</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Email para Envio do Render</label>
+                    <input type="email" name="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <!-- PROJETO 3D -->
+                <h2>02 // PROJETO 3D</h2>
+
+                <div class="form-group">
+                    <label class="required">Software de Modelagem Utilizado</label>
+                    <select name="software_3d" required>
+                        <option value="">Selecione...</option>
+                        <option value="sketchup">SketchUp</option>
+                        <option value="3dsmax">3ds Max</option>
+                        <option value="revit">Revit</option>
+                        <option value="rhino">Rhino</option>
+                        <option value="blender">Blender</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <!-- CAMPO DE LINK PARA ARQUIVOS GRANDES (substitui upload) -->
+                <div class="form-group">
+                    <label class="required">Arquivo 3D (acima de 20MB)</label>
+                    <div class="info-box">
+                        <strong>📤 Como enviar arquivos grandes:</strong><br><br>
+                        1. Envie seu arquivo via <strong>WeTransfer</strong> ou <strong>Google Drive</strong><br>
+                        2. Copie o link de compartilhamento<br>
+                        3. Cole no campo abaixo<br><br>
+                        <em style="color: #8f9f8a;">Dica: No Google Drive, clique com botão direito > Compartilhar > "Qualquer pessoa com o link"</em>
+                    </div>
+                    <input type="url" name="link_arquivo_3d" placeholder="https://wetransfer.com/..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Ambiente a Ser Renderizado</label>
+                    <select name="ambiente" required>
+                        <option value="">Selecione o ambiente...</option>
+                        <option value="sala_estar">Sala de Estar</option>
+                        <option value="sala_jantar">Sala de Jantar</option>
+                        <option value="cozinha">Cozinha</option>
+                        <option value="quarto">Quarto</option>
+                        <option value="suite">Suíte</option>
+                        <option value="banheiro">Banheiro</option>
+                        <option value="varanda">Varanda/Área Externa</option>
+                        <option value="fachada">Fachada</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <!-- 03 // DIREÇÃO DE ARTE - EXCLUÍDO -->
+
+                <!-- MATERIAIS -->
+                <h2>04 // MATERIAIS E ACABAMENTOS</h2>
+
+                <div class="info-box">
+                    <strong>💡 DICA IMPORTANTE:</strong><br>
+                    Quanto mais específico você for, mais fiel o render será! 
+                    Evite termos genéricos. Use nomes de produtos, marcas e códigos de cor.
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Piso</label>
+                    <textarea name="material_piso" rows="2" required placeholder="Ex: Porcelanato Acinzentado Fosco 90x90 - Marca Portobello - Modelo Stone Cinza"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Paredes</label>
+                    <textarea name="material_paredes" rows="2" required placeholder="Ex: Tinta Suvinil cor 'Areia' (código XYZ), Textura de Concreto Queimado na parede principal"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Marcenaria (Móveis Fixos)</label>
+                    <textarea name="material_marcenaria" rows="2" required placeholder="Ex: MDF Branco Alto Brilho, Madeira Freijó Natural, Laca Fosca Preta"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Estofados e Tecidos</label>
+                    <textarea name="material_tecidos" rows="2" placeholder="Ex: Sofá em Linho Bege, Almofadas em Veludo Verde Esmeralda, Cortina em Voil Branco"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Metais e Acabamentos Especiais</label>
+                    <textarea name="material_metais" rows="2" placeholder="Ex: Torneira em Grafite, Puxadores em Latão Envelhecido, Box em Vidro Incolor"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Links de Referência de Materiais</label>
+                    <textarea name="links_materiais" rows="3" placeholder="Cole aqui os links dos sites dos fabricantes ou Pinterest com referências dos materiais:&#10;&#10;Ex:&#10;https://portobello.com.br/produto/stone-cinza&#10;https://suvinil.com.br/cores/areia"></textarea>
+                </div>
+
+                <!-- 05 // MOBILIÁRIO E DECORAÇÃO - EXCLUÍDO -->
+
+                <!-- 06 // OBSERVAÇÕES ADICIONAIS - EXCLUÍDO -->
+
+                <!-- TERMOS -->
+                <h2>07 // TERMOS E CONDIÇÕES</h2>
+
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="termo1" name="termos[]" value="sem_revisao" required>
+                        <label for="termo1">
+                            <strong>Entendo que este é um render de conceito sem revisão.</strong> 
+                            O resultado será entregue conforme as especificações enviadas neste formulário.
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="termo2" name="termos[]" value="postar_redes" required>
+                        <label for="termo2">
+                            <strong>Comprometo-me a postar o resultado nas redes sociais</strong> 
+                            marcando <strong>@carolhenrique.3d</strong>.
+                        </label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="termo3" name="termos[]" value="condicao_exclusiva" required>
+                        <label for="termo3">
+                            <strong>Entendo que minha participação nesta fase de teste</strong> 
+                            me garante condição exclusiva no primeiro projeto completo.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Briefing [ETR]</button>
+
+            </form>
+        </div>
+        
+        <!-- PÁGINA DE AGRADECIMENTO -->
+        <div class="thank-you-page" id="thankYouPage">
+            <div class="checkmark">✓</div>
+            <h2>BRIEFING RECEBIDO!</h2>
+            <p>Obrigado por participar do nosso <strong>Teste de Conceito Express</strong>.</p>
+            
+            <div class="next-steps">
+                <strong>Próximos passos:</strong><br><br>
+                • Verifique seu email: enviaremos um comprovante de recebimento<br>
+                • Nossa equipe analisará seu projeto nas próximas 24h<br>
+                • O render será entregue diretamente no seu email através de link do Google Drive, você receberá uma mensagem por WhatsApp avisando o envio<br>
+                • Ao receber, marque <strong>@carolhenrique.3d</strong> ao compartilhar!
+            </div>
+            
+            <p style="margin-top: 25px; color: #8f9f8a; font-size: 0.85em;">
+                Dúvidas? 💬 <a href="https://wa.me/5519989842020" target="_blank" style="color: #d4af37; text-decoration: none;">(19) 98984-2020</a>
+            </p>
+            
+            <button class="btn-back" onclick="location.reload()">← Enviar outro briefing</button>
+        </div>
+
+        <footer>
+            <p>[ETR] - ENTER THE RENDER</p>
+            <p>ARCHVIZ STUDIO | ONLINE</p>
+            <p style="margin-top: 10px;">entertherender.com</p>
+            <p style="margin-top: 5px;">© 2026 [ETR]</p>
+        </footer>
+    </div>
+
+    <script>
+    // Validação e envio via Formspree (mantém a página de agradecimento)
+    document.getElementById('briefingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const checkboxes = document.querySelectorAll('input[name="termos[]"]:checked');
+        if (checkboxes.length < 3) {
+            alert('Por favor, aceite todos os termos e condições para continuar.');
+            return false;
+        }
+
+        const btn = document.querySelector('.btn-submit');
+        const originalText = btn.textContent;
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Sucesso: mostra a página de agradecimento
+                document.getElementById('mainForm').classList.add('hidden');
+                document.getElementById('thankYouPage').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.reset();
+            } else {
+                response.json().then(data => {
+                    alert('Erro ao enviar: ' + (data.error || 'Tente novamente.'));
+                });
+            }
+        })
+        .catch(error => {
+            alert('Erro de conexão. Verifique sua internet e tente novamente.');
+        })
+        .finally(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
+    });
+
+    // Mantém compatibilidade com inputs de arquivo (caso adicione no futuro)
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            const label = this.nextElementSibling;
+            if (fileName && label) {
+                label.innerHTML = `✅ ${fileName}<br><small>Arquivo selecionado com sucesso</small>`;
+                label.style.borderColor = '#d4af37';
+                label.style.color = '#d4af37';
+            }
+        });
+    });
+</script>
