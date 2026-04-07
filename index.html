@@ -88,11 +88,6 @@
             font-size: 0.9em;
         }
 
-        .required::after {
-            content: " *";
-            color: #c94545;
-        }
-
         input[type="text"],
         input[type="email"],
         input[type="url"],
@@ -319,38 +314,38 @@
                 Quanto mais detalhado, mais fiel será o render!
             </div>
 
-            <form id="briefingForm" action="https://formspree.io/f/mgopqenz" method="POST">
+            <form id="briefingForm" action="#" method="POST">
                 
                 <!-- DADOS DO CLIENTE -->
                 <h2>01 // DADOS DO CLIENTE</h2>
                 
                 <div class="form-group">
-                    <label class="required">Nome do Responsável</label>
-                    <input type="text" name="nome_responsavel" required placeholder="Seu nome completo">
+                    <label>Nome do Responsável</label>
+                    <input type="text" name="nome_responsavel" placeholder="Seu nome completo">
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Nome do Escritório de Arquitetura</label>
-                    <input type="text" name="nome_escritorio" required placeholder="Nome do seu escritório">
+                    <label>Nome do Escritório de Arquitetura</label>
+                    <input type="text" name="nome_escritorio" placeholder="Nome do seu escritório">
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Instagram do Escritório</label>
-                    <input type="text" name="instagram" required placeholder="@seuescritorio">
+                    <label>Instagram do Escritório</label>
+                    <input type="text" name="instagram" placeholder="@seuescritorio">
                     <div class="hint">* Obrigatório para marcação nas redes sociais</div>
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Email para Envio do Render</label>
-                    <input type="email" name="email" required placeholder="seuemail@exemplo.com">
+                    <label>Email para Envio do Render</label>
+                    <input type="email" name="email" placeholder="seuemail@exemplo.com">
                 </div>
 
                 <!-- PROJETO 3D -->
                 <h2>02 // PROJETO 3D</h2>
 
                 <div class="form-group">
-                    <label class="required">Software de Modelagem Utilizado</label>
-                    <select name="software_3d" required>
+                    <label>Software de Modelagem Utilizado</label>
+                    <select name="software_3d">
                         <option value="">Selecione...</option>
                         <option value="sketchup">SketchUp</option>
                         <option value="3dsmax">3ds Max</option>
@@ -363,7 +358,7 @@
 
                 <!-- CAMPO DE LINK PARA ARQUIVOS GRANDES (substitui upload) -->
                 <div class="form-group">
-                    <label class="required">Arquivo 3D (acima de 20MB)</label>
+                    <label>Arquivo 3D (acima de 20MB)</label>
                     <div class="info-box">
                         <strong>📤 Como enviar arquivos grandes:</strong><br><br>
                         1. Envie seu arquivo via <strong>WeTransfer</strong> ou <strong>Google Drive</strong><br>
@@ -371,12 +366,12 @@
                         3. Cole no campo abaixo<br><br>
                         <em style="color: #8f9f8a;">Dica: No Google Drive, clique com botão direito > Compartilhar > "Qualquer pessoa com o link"</em>
                     </div>
-                    <input type="url" name="link_arquivo_3d" placeholder="https://wetransfer.com/..." required>
+                    <input type="url" name="link_arquivo_3d" placeholder="https://wetransfer.com/...">
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Ambiente a Ser Renderizado</label>
-                    <select name="ambiente" required>
+                    <label>Ambiente a Ser Renderizado</label>
+                    <select name="ambiente">
                         <option value="">Selecione o ambiente...</option>
                         <option value="sala_estar">Sala de Estar</option>
                         <option value="sala_jantar">Sala de Jantar</option>
@@ -390,8 +385,6 @@
                     </select>
                 </div>
 
-                <!-- 03 // DIREÇÃO DE ARTE - EXCLUÍDO -->
-
                 <!-- MATERIAIS -->
                 <h2>04 // MATERIAIS E ACABAMENTOS</h2>
 
@@ -402,18 +395,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Piso</label>
-                    <textarea name="material_piso" rows="2" required placeholder="Ex: Porcelanato Acinzentado Fosco 90x90 - Marca Portobello - Modelo Stone Cinza"></textarea>
+                    <label>Piso</label>
+                    <textarea name="material_piso" rows="2" placeholder="Ex: Porcelanato Acinzentado Fosco 90x90 - Marca Portobello - Modelo Stone Cinza"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Paredes</label>
-                    <textarea name="material_paredes" rows="2" required placeholder="Ex: Tinta Suvinil cor 'Areia' (código XYZ), Textura de Concreto Queimado na parede principal"></textarea>
+                    <label>Paredes</label>
+                    <textarea name="material_paredes" rows="2" placeholder="Ex: Tinta Suvinil cor 'Areia' (código XYZ), Textura de Concreto Queimado na parede principal"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="required">Marcenaria (Móveis Fixos)</label>
-                    <textarea name="material_marcenaria" rows="2" required placeholder="Ex: MDF Branco Alto Brilho, Madeira Freijó Natural, Laca Fosca Preta"></textarea>
+                    <label>Marcenaria (Móveis Fixos)</label>
+                    <textarea name="material_marcenaria" rows="2" placeholder="Ex: MDF Branco Alto Brilho, Madeira Freijó Natural, Laca Fosca Preta"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -431,30 +424,26 @@
                     <textarea name="links_materiais" rows="3" placeholder="Cole aqui os links dos sites dos fabricantes ou Pinterest com referências dos materiais:&#10;&#10;Ex:&#10;https://portobello.com.br/produto/stone-cinza&#10;https://suvinil.com.br/cores/areia"></textarea>
                 </div>
 
-                <!-- 05 // MOBILIÁRIO E DECORAÇÃO - EXCLUÍDO -->
-
-                <!-- 06 // OBSERVAÇÕES ADICIONAIS - EXCLUÍDO -->
-
                 <!-- TERMOS -->
                 <h2>07 // TERMOS E CONDIÇÕES</h2>
 
                 <div class="checkbox-group">
                     <div class="checkbox-item">
-                        <input type="checkbox" id="termo1" name="termos[]" value="sem_revisao" required>
+                        <input type="checkbox" id="termo1" name="termos[]" value="sem_revisao">
                         <label for="termo1">
                             <strong>Entendo que este é um render de conceito sem revisão.</strong> 
                             O resultado será entregue conforme as especificações enviadas neste formulário.
                         </label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="termo2" name="termos[]" value="postar_redes" required>
+                        <input type="checkbox" id="termo2" name="termos[]" value="postar_redes">
                         <label for="termo2">
                             <strong>Comprometo-me a postar o resultado nas redes sociais</strong> 
                             marcando <strong>@carolhenrique.3d</strong>.
                         </label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="termo3" name="termos[]" value="condicao_exclusiva" required>
+                        <input type="checkbox" id="termo3" name="termos[]" value="condicao_exclusiva">
                         <label for="termo3">
                             <strong>Entendo que minha participação nesta fase de teste</strong> 
                             me garante condição exclusiva no primeiro projeto completo.
@@ -497,60 +486,33 @@
     </div>
 
     <script>
-    // Validação e envio via Formspree (mantém a página de agradecimento)
-    document.getElementById('briefingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const checkboxes = document.querySelectorAll('input[name="termos[]"]:checked');
-        if (checkboxes.length < 3) {
-            alert('Por favor, aceite todos os termos e condições para continuar.');
-            return false;
-        }
-
-        const btn = document.querySelector('.btn-submit');
-        const originalText = btn.textContent;
-        btn.textContent = 'Enviando...';
-        btn.disabled = true;
-
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Sucesso: mostra a página de agradecimento
-                document.getElementById('mainForm').classList.add('hidden');
-                document.getElementById('thankYouPage').classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                this.reset();
-            } else {
-                response.json().then(data => {
-                    alert('Erro ao enviar: ' + (data.error || 'Tente novamente.'));
-                });
-            }
-        })
-        .catch(error => {
-            alert('Erro de conexão. Verifique sua internet e tente novamente.');
-        })
-        .finally(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
+        // Envio do formulário sem validação de campos obrigatórios
+        document.getElementById('briefingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você integraria com seu backend/API de envio
+            // Ex: fetch(), Formspree, EmailJS, etc.
+            
+            // Exibe a página de agradecimento
+            document.getElementById('mainForm').classList.add('hidden');
+            document.getElementById('thankYouPage').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            /* 
+            // Exemplo de integração com fetch:
+            const formData = new FormData(this);
+            fetch('SEU_ENDPOINT_AQUI', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if(response.ok) {
+                    document.getElementById('mainForm').classList.add('hidden');
+                    document.getElementById('thankYouPage').classList.add('active');
+                }
+            });
+            */
         });
-    });
-
-    // Mantém compatibilidade com inputs de arquivo (caso adicione no futuro)
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        input.addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name;
-            const label = this.nextElementSibling;
-            if (fileName && label) {
-                label.innerHTML = `✅ ${fileName}<br><small>Arquivo selecionado com sucesso</small>`;
-                label.style.borderColor = '#d4af37';
-                label.style.color = '#d4af37';
-            }
-        });
-    });
-</script>
+    </script>
+</body>
+</html>
