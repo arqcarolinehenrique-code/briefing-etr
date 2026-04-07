@@ -7,293 +7,44 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #1a2218; color: #ffffff; font-family: 'Roboto', sans-serif; line-height: 1.6; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #242f20; padding: 40px; border-radius: 8px; border: 2px solid #3d4f3a; }
+        .logo { text-align: center; margin-bottom: 30px; }
+        .logo h1 { font-family: 'Press Start 2P', cursive; font-size: 2.5em; color: #c94545; text-shadow: 3px 3px 0px #1a2218; margin-bottom: 10px; }
+        .logo span { color: #d4af37; }
+        .subtitle { font-family: 'Press Start 2P', cursive; font-size: 0.7em; color: #8f9f8a; margin-bottom: 10px; letter-spacing: 3px; }
+        .tagline { color: #d4af37; text-align: center; font-size: 0.9em; margin-bottom: 30px; letter-spacing: 2px; }
+        h2 { font-family: 'Press Start 2P', cursive; font-size: 1em; color: #c94545; margin: 30px 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid #3d4f3a; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #d4af37; font-weight: 700; font-size: 0.9em; }
+        input[type="text"], input[type="email"], input[type="url"], select, textarea { width: 100%; padding: 12px; background-color: #1a2218; border: 2px solid #3d4f3a; color: #ffffff; border-radius: 4px; font-family: 'Roboto', sans-serif; font-size: 1em; transition: border-color 0.3s; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #d4af37; }
+        textarea { resize: vertical; min-height: 100px; }
+        .hint { font-size: 0.8em; color: #8f9f8a; margin-top: 5px; font-style: italic; }
+        .checkbox-group { background-color: #1a2218; padding: 15px; border-radius: 4px; border: 1px solid #3d4f3a; }
+        .checkbox-item { display: flex; align-items: flex-start; margin-bottom: 10px; }
+        .checkbox-item input[type="checkbox"] { margin-right: 10px; margin-top: 3px; width: 18px; height: 18px; accent-color: #c94545; }
+        .checkbox-item label { margin: 0; color: #ffffff; font-weight: 400; font-size: 0.85em; }
+        .btn-submit { display: block; width: 100%; padding: 15px; margin-top: 30px; background-color: #c94545; color: #ffffff; border: none; border-radius: 4px; font-family: 'Press Start 2P', cursive; font-size: 0.9em; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-submit:hover { background-color: #a33333; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+        .info-box { background-color: #1a2218; border-left: 4px solid #d4af37; padding: 15px; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
+        .info-box strong { color: #d4af37; }
+        footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #3d4f3a; color: #8f9f8a; font-size: 0.8em; }
+        
+        /* Página de Agradecimento */
+        .thank-you-page { display: none; text-align: center; padding: 40px 20px; }
+        .thank-you-page.active { display: block; }
+        .form-content.hidden { display: none; }
+        .thank-you-page .checkmark { font-family: 'Press Start 2P', cursive; font-size: 3em; color: #d4af37; margin-bottom: 20px; }
+        .thank-you-page h2 { font-family: 'Press Start 2P', cursive; font-size: 1em; color: #c94545; margin: 20px 0 15px 0; padding-bottom: 10px; border-bottom: 2px solid #3d4f3a; }
+        .thank-you-page p { margin-bottom: 15px; color: #ffffff; }
+        .thank-you-page .next-steps { background-color: #1a2218; padding: 15px; border-radius: 4px; border: 1px solid #3d4f3a; text-align: left; margin: 20px 0; }
+        .thank-you-page .next-steps strong { color: #d4af37; }
+        .btn-back { background-color: transparent; border: 2px solid #d4af37; color: #d4af37; padding: 12px 25px; border-radius: 4px; font-family: 'Press Start 2P', cursive; font-size: 0.7em; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; }
+        .btn-back:hover { background-color: #d4af37; color: #1a2218; }
 
-        body {
-            background-color: #1a2218;
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #242f20;
-            padding: 40px;
-            border-radius: 8px;
-            border: 2px solid #3d4f3a;
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.5em;
-            color: #c94545;
-            text-shadow: 3px 3px 0px #1a2218;
-            margin-bottom: 10px;
-        }
-
-        .logo span {
-            color: #d4af37;
-        }
-
-        .logo-white {
-            color: #ffffff;
-        }
-
-        .subtitle {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.7em;
-            color: #8f9f8a;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-        }
-
-        .tagline {
-            color: #d4af37;
-            text-align: center;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1em;
-            color: #c94545;
-            margin: 30px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3d4f3a;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #d4af37;
-            font-weight: 700;
-            font-size: 0.9em;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="url"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: #1a2218;
-            border: 2px solid #3d4f3a;
-            color: #ffffff;
-            border-radius: 4px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1em;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="url"]:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #d4af37;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .hint {
-            font-size: 0.8em;
-            color: #8f9f8a;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        .checkbox-group {
-            background-color: #1a2218;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #3d4f3a;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            margin-right: 10px;
-            margin-top: 3px;
-            width: 18px;
-            height: 18px;
-            accent-color: #c94545;
-        }
-
-        .checkbox-item label {
-            margin: 0;
-            color: #ffffff;
-            font-weight: 400;
-            font-size: 0.85em;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 30px;
-            background-color: #c94545;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .btn-submit:hover {
-            background-color: #a33333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .info-box {
-            background-color: #1a2218;
-            border-left: 4px solid #d4af37;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .info-box strong {
-            color: #d4af37;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #3d4f3a;
-            color: #8f9f8a;
-            font-size: 0.8em;
-        }
-
-        .file-input-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .file-input-wrapper input[type=file] {
-            position: absolute;
-            left: -9999px;
-        }
-
-        .file-input-label {
-            display: block;
-            padding: 12px;
-            background-color: #1a2218;
-            border: 2px dashed #3d4f3a;
-            color: #8f9f8a;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .file-input-label:hover {
-            border-color: #d4af37;
-            color: #d4af37;
-        }
-
-        /* Página de Agradecimento - estilo integrado ao original */
-        .thank-you-page {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .thank-you-page.active {
-            display: block;
-        }
-        .form-content.hidden {
-            display: none;
-        }
-        .thank-you-page .checkmark {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 3em;
-            color: #d4af37;
-            margin-bottom: 20px;
-        }
-        .thank-you-page h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1em;
-            color: #c94545;
-            margin: 20px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3d4f3a;
-        }
-        .thank-you-page p {
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .thank-you-page .next-steps {
-            background-color: #1a2218;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #3d4f3a;
-            text-align: left;
-            margin: 20px 0;
-        }
-        .thank-you-page .next-steps strong {
-            color: #d4af37;
-        }
-        .btn-back {
-            background-color: transparent;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            padding: 12px 25px;
-            border-radius: 4px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.7em;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-        .btn-back:hover {
-            background-color: #d4af37;
-            color: #1a2218;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            .logo h1 {
-                font-size: 1.5em;
-            }
-        }
+        @media (max-width: 600px) { .container { padding: 20px; } .logo h1 { font-size: 1.5em; } }
     </style>
 </head>
 <body>
@@ -314,35 +65,29 @@
                 Quanto mais detalhado, mais fiel será o render!
             </div>
 
+            <!-- 🔧 SUBSTITUA O LINK ABAIXO PELO SEU ENDPOINT DO FORMSPREE -->
             <form id="briefingForm" action="https://formspree.io/f/mgopqenz" method="POST">
                 
-                <!-- DADOS DO CLIENTE -->
                 <h2>01 // DADOS DO CLIENTE</h2>
-                
                 <div class="form-group">
                     <label>Nome do Responsável</label>
                     <input type="text" name="nome_responsavel" placeholder="Seu nome completo">
                 </div>
-
                 <div class="form-group">
                     <label>Nome do Escritório de Arquitetura</label>
                     <input type="text" name="nome_escritorio" placeholder="Nome do seu escritório">
                 </div>
-
                 <div class="form-group">
                     <label>Instagram do Escritório</label>
                     <input type="text" name="instagram" placeholder="@seuescritorio">
-                    <div class="hint">* Obrigatório para marcação nas redes sociais</div>
+                    <div class="hint">Para marcação nas redes sociais</div>
                 </div>
-
                 <div class="form-group">
                     <label>Email para Envio do Render</label>
                     <input type="email" name="email" placeholder="seuemail@exemplo.com">
                 </div>
 
-                <!-- PROJETO 3D -->
                 <h2>02 // PROJETO 3D</h2>
-
                 <div class="form-group">
                     <label>Software de Modelagem Utilizado</label>
                     <select name="software_3d">
@@ -356,7 +101,6 @@
                     </select>
                 </div>
 
-                <!-- CAMPO DE LINK PARA ARQUIVOS GRANDES (substitui upload) -->
                 <div class="form-group">
                     <label>Arquivo 3D (acima de 20MB)</label>
                     <div class="info-box">
@@ -385,74 +129,36 @@
                     </select>
                 </div>
 
-                <!-- MATERIAIS -->
                 <h2>04 // MATERIAIS E ACABAMENTOS</h2>
-
                 <div class="info-box">
                     <strong>💡 DICA IMPORTANTE:</strong><br>
                     Quanto mais específico você for, mais fiel o render será! 
                     Evite termos genéricos. Use nomes de produtos, marcas e códigos de cor.
                 </div>
+                <div class="form-group"><label>Piso</label><textarea name="material_piso" rows="2" placeholder="Ex: Porcelanato Acinzentado Fosco 90x90"></textarea></div>
+                <div class="form-group"><label>Paredes</label><textarea name="material_paredes" rows="2" placeholder="Ex: Tinta Suvinil cor 'Areia'"></textarea></div>
+                <div class="form-group"><label>Marcenaria (Móveis Fixos)</label><textarea name="material_marcenaria" rows="2" placeholder="Ex: MDF Branco Alto Brilho"></textarea></div>
+                <div class="form-group"><label>Estofados e Tecidos</label><textarea name="material_tecidos" rows="2" placeholder="Ex: Sofá em Linho Bege"></textarea></div>
+                <div class="form-group"><label>Metais e Acabamentos Especiais</label><textarea name="material_metais" rows="2" placeholder="Ex: Torneira em Grafite"></textarea></div>
+                <div class="form-group"><label>Links de Referência de Materiais</label><textarea name="links_materiais" rows="3" placeholder="Cole aqui os links..."></textarea></div>
 
-                <div class="form-group">
-                    <label>Piso</label>
-                    <textarea name="material_piso" rows="2" placeholder="Ex: Porcelanato Acinzentado Fosco 90x90 - Marca Portobello - Modelo Stone Cinza"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Paredes</label>
-                    <textarea name="material_paredes" rows="2" placeholder="Ex: Tinta Suvinil cor 'Areia' (código XYZ), Textura de Concreto Queimado na parede principal"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Marcenaria (Móveis Fixos)</label>
-                    <textarea name="material_marcenaria" rows="2" placeholder="Ex: MDF Branco Alto Brilho, Madeira Freijó Natural, Laca Fosca Preta"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Estofados e Tecidos</label>
-                    <textarea name="material_tecidos" rows="2" placeholder="Ex: Sofá em Linho Bege, Almofadas em Veludo Verde Esmeralda, Cortina em Voil Branco"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Metais e Acabamentos Especiais</label>
-                    <textarea name="material_metais" rows="2" placeholder="Ex: Torneira em Grafite, Puxadores em Latão Envelhecido, Box em Vidro Incolor"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Links de Referência de Materiais</label>
-                    <textarea name="links_materiais" rows="3" placeholder="Cole aqui os links dos sites dos fabricantes ou Pinterest com referências dos materiais:&#10;&#10;Ex:&#10;https://portobello.com.br/produto/stone-cinza&#10;https://suvinil.com.br/cores/areia"></textarea>
-                </div>
-
-                <!-- TERMOS -->
                 <h2>07 // TERMOS E CONDIÇÕES</h2>
-
                 <div class="checkbox-group">
                     <div class="checkbox-item">
                         <input type="checkbox" id="termo1" name="termos[]" value="sem_revisao">
-                        <label for="termo1">
-                            <strong>Entendo que este é um render de conceito sem revisão.</strong> 
-                            O resultado será entregue conforme as especificações enviadas neste formulário.
-                        </label>
+                        <label for="termo1"><strong>Entendo que este é um render de conceito sem revisão.</strong> O resultado será entregue conforme as especificações enviadas.</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="termo2" name="termos[]" value="postar_redes">
-                        <label for="termo2">
-                            <strong>Comprometo-me a postar o resultado nas redes sociais</strong> 
-                            marcando <strong>@carolhenrique.3d</strong>.
-                        </label>
+                        <label for="termo2"><strong>Comprometo-me a postar o resultado nas redes sociais</strong> marcando <strong>@carolhenrique.3d</strong>.</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="termo3" name="termos[]" value="condicao_exclusiva">
-                        <label for="termo3">
-                            <strong>Entendo que minha participação nesta fase de teste</strong> 
-                            me garante condição exclusiva no primeiro projeto completo.
-                        </label>
+                        <label for="termo3"><strong>Entendo que minha participação nesta fase de teste</strong> me garante condição exclusiva no primeiro projeto completo.</label>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit">Enviar Briefing [ETR]</button>
-
             </form>
         </div>
         
@@ -486,62 +192,38 @@
     </div>
 
     <script>
-    // Validação e envio via Formspree (mantém a página de agradecimento)
-    document.getElementById('briefingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const checkboxes = document.querySelectorAll('input[name="termos[]"]:checked');
-        if (checkboxes.length < 3) {
-            alert('Por favor, aceite todos os termos e condições para continuar.');
-            return false;
-        }
+        document.getElementById('briefingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
 
-        const btn = document.querySelector('.btn-submit');
-        const originalText = btn.textContent;
-        btn.textContent = 'Enviando...';
-        btn.disabled = true;
-
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Sucesso: mostra a página de agradecimento
-                document.getElementById('mainForm').classList.add('hidden');
-                document.getElementById('thankYouPage').classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                this.reset();
-            } else {
-                response.json().then(data => {
-                    alert('Erro ao enviar: ' + (data.error || 'Tente novamente.'));
-                });
-            }
-        })
-        .catch(error => {
-            alert('Erro de conexão. Verifique sua internet e tente novamente.');
-        })
-        .finally(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('mainForm').classList.add('hidden');
+                    document.getElementById('thankYouPage').classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    form.reset();
+                } else {
+                    alert('Erro ao enviar. Verifique sua conexão ou tente novamente.');
+                }
+            })
+            .catch(error => {
+                alert('Erro de conexão. Tente novamente mais tarde.');
+            })
+            .finally(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
         });
-    });
-
-    // Mantém compatibilidade com inputs de arquivo (caso adicione no futuro)
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        input.addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name;
-            const label = this.nextElementSibling;
-            if (fileName && label) {
-                label.innerHTML = `✅ ${fileName}<br><small>Arquivo selecionado com sucesso</small>`;
-                label.style.borderColor = '#d4af37';
-                label.style.color = '#d4af37';
-            }
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
